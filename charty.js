@@ -4,7 +4,7 @@
 */
 
 /** @class Charty representing a chart*/
-export default class Charty{
+class Charty{
 /**
  * Creates an instance of Charty.
  *
@@ -186,32 +186,3 @@ export default class Charty{
     }
   };
 }
-
-// const myChart = new Charty({title: 'Pets', selector: '#app'});
-// myChart.addData({ name: 'Dogs', value: 8 });
-// myChart.addData({ name: 'Cats', value: 3 });
-// myChart.addData({ name: 'Birds', value: 11 });
-// myChart.addData({ name: 'Fishes', value: 9 });
-// myChart.addData({ name: 'Butterflies', value: 19 });
-
-// const obj = new Charty({selector: '#app'}); 
-
-// const x = new Charty(
-//   {
-//     title: 'Fruits', 
-//     chartType: 'Pie', 
-//     data: [{Oranges: 23}, {Apples: 44}, {Guavas: 33}],
-//     precision: true,
-//     selector: '#app'
-//   }
-// );
-
-// x.addData({name: 'Grapes', value: 77});
-// // const button = document.createElement('BUTTON');
-// // button.textContent = 'Add data';
-// // button.addEventListener('click', e => {
-// //   let name = prompt('New data:');
-// //   let value = parseInt(prompt('Value:')) || 0;
-// //   x.addData({name: name, value: value});
-// // });
-// // document.querySelector(`[data-chart-id="${x.id}"]`).appendChild(button);
