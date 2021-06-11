@@ -1,12 +1,28 @@
+/**
+*  Charty a circle & pie chart small library.
+* @author: Mario Abreu
+*/
 
-// Write Javascript code!
-class Charty{
+/** @class Charty representing a chart*/
+export default class Charty{
+/**
+ * Creates an instance of Charty.
+ *
+ * 
+ * 
+ * @constructor
+ * @param {string} title The title of the chart
+ * @param {string} chartType The type of chart circle|pie
+ * @param {array} data An array of objects in the pair format: name/vale {name: value}
+ * @param {boolean} precision Determines wheter the chart have decimal precision or not
+ * @param {string} selector The html element where the chart will be insert, must be a valid css selector
+ */
   constructor({title = 'New Chart', chartType = 'circle', data = [{Test: 5}], precision = false, selector = 'body' }) {
     this.chartType = chartType;
     this.title = title;
-    this.precision = false;
+    this.precision = precision;
     this.selector = selector;
-    this.id = new Date().getTime();
+    this.id = `${Math.floor(Math.random()*10000)}`;
     this.data = [...data];
     this.percents = [];
     this.angles = [];
@@ -15,6 +31,12 @@ class Charty{
     this.draw();
   }
 
+/**
+ * Insert new data in a chart
+ * 
+ * @param {string} name The name of the data to insert
+ * @param {int} value The value of the data to insert
+ */
   addData({ name, value }) {
     const newData = Object.fromEntries([[name, value]]);
     this.data = [...this.data, newData];
@@ -22,19 +44,34 @@ class Charty{
     this.draw();
   };
 
+/**
+ * Calculate the individual percentage of every data
+ * 
+ * @param {array} data An array of the initial values for a chart
+ */
   calculatePercents(data) {
     const totalItems = data.length;
     const totalCount = data.reduce((acc, obj) => acc + +Object.values(obj), 0);
 
     this.percents = [
-      ...this.data.map(obj =>
-        Math.round((+Object.values(obj) * 100) / totalCount)
-      )
+      ...this.data.map(obj =>{
+          if(!this.precision){
+            return Math.round((+Object.values(obj) * 100) / totalCount);
+          }
+          else{
+            return ((+Object.values(obj) * 100) / totalCount).toFixed(2);
+          }
+      })
     ];
 
     this.calculateAngles(this.percents);
   };
 
+/**
+ * Calculate the angles of the gradient for every data
+ * 
+ * @param {array} data An array of the data in the chart
+ */
   calculateAngles(data) {
     this.angles = [...data.map(value => Math.floor((value * 360) / 100))];
     for (let i = 1; i < this.angles.length; ++i) {
@@ -42,6 +79,12 @@ class Charty{
     }
   };
 
+/**
+ * Return a color for a piece of the chart
+ * 
+ * @param {int} index A integer to get a color
+ * @return {string} Th color in the array to return
+ */
   getColor(index) {
     const colors = [
       'purple',
@@ -60,8 +103,12 @@ class Charty{
     return colors[index];
   };
 
-  draw(appendSelector) {
-    const selector = appendSelector || this.selector;
+/**
+ * Draw a chart and insert it in a element of the DOM
+ * 
+ */
+  draw() {
+    const selector = this.selector;
     let gradient;
     if (this.angles.length !== 1) {
       gradient = this.angles.reduce(
@@ -140,29 +187,31 @@ class Charty{
   };
 }
 
+// const myChart = new Charty({title: 'Pets', selector: '#app'});
+// myChart.addData({ name: 'Dogs', value: 8 });
+// myChart.addData({ name: 'Cats', value: 3 });
+// myChart.addData({ name: 'Birds', value: 11 });
+// myChart.addData({ name: 'Fishes', value: 9 });
+// myChart.addData({ name: 'Butterflies', value: 19 });
 
-const myChart = new Charty({title: 'Pets', selector: '#app'});
-myChart.addData({ name: 'Dogs', value: 8 });
-myChart.addData({ name: 'Cats', value: 3 });
-myChart.addData({ name: 'Birds', value: 11 });
-myChart.addData({ name: 'Fishes', value: 9 });
-myChart.addData({ name: 'Butterflies', value: 19 });
+// const obj = new Charty({selector: '#app'}); 
 
-// myChart.draw('#app');
+// const x = new Charty(
+//   {
+//     title: 'Fruits', 
+//     chartType: 'Pie', 
+//     data: [{Oranges: 23}, {Apples: 44}, {Guavas: 33}],
+//     precision: true,
+//     selector: '#app'
+//   }
+// );
 
-
-
-const obj = new Charty({title: 'Insects', selector: '#app'});
-// obj.draw();
-
-
-const x = new Charty(
-  {
-    title: 'New Test', 
-    chartType: 'Pie', 
-    data: [{Oranges: 23}, {Apples: 44}, {Guavas: 33}],
-    selector: '#app'
-  }
-);
-
-x.addData({name: 'Grapes', value: 77});
+// x.addData({name: 'Grapes', value: 77});
+// // const button = document.createElement('BUTTON');
+// // button.textContent = 'Add data';
+// // button.addEventListener('click', e => {
+// //   let name = prompt('New data:');
+// //   let value = parseInt(prompt('Value:')) || 0;
+// //   x.addData({name: name, value: value});
+// // });
+// // document.querySelector(`[data-chart-id="${x.id}"]`).appendChild(button);
