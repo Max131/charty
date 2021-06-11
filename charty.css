@@ -1,0 +1,58 @@
+@charset 'utf-8';
+
+.chart {
+  /*width: 280px;*/
+  box-shadow: 0 0 4px silver, 0 0 15px gray;
+  border-radius: 0.25rem;
+  padding: 1rem 1.5rem;
+  /*margin: 0.5rem;*/
+  background: linear-gradient(whitesmoke, lavender);
+  /*display: inline-block;*/
+}
+.chart__title {
+  text-align: center;
+  color: #555;
+}
+.chart__graph {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 1.5rem auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+  box-shadow: 1px 1px 10px silver;
+}
+.chart__circle::after {
+  content: '';
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px inset silver;
+}
+.chart__percents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.chart__percent {
+  margin: 0.25rem;
+  font-size: small;
+}
+
+.chart__piece {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-left: 0.25rem;
+}
+.chart__dataRow {
+  margin-top: 0.5rem;
+  padding: 0 1rem 0.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+.chart__dataRow:not(:last-child) {
+  border-bottom: 1px solid silver;
+}

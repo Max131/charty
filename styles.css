@@ -1,0 +1,19 @@
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font: 16px/1.6 system-ui, sans-serif;
+}
+body {
+  padding: 1rem;
+}
+#app{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:  1rem;
+  margin:  1rem;
+}
