@@ -21,7 +21,7 @@ class Charty{
     this.chartType = chartType;
     this.title = title;
     this.precision = precision;
-    this.selector = selector;
+    this.selector = selector || 'body';
     this.id = `${Math.floor(Math.random()*10000)}`;
     this.data = [...data];
     this.percents = [];
