@@ -87,18 +87,18 @@ class Charty{
  */
   getColor(index) {
     const colors = [
-      'purple',
-      'midnightblue',
-      'blue',
-      'cyan',
-      'magenta',
-      'yellow',
-      'dimgray',
-      'orange',
-      'brown',
-      'indigo',
-      'pink',
-      'gold'
+      '#E6A57E',
+      '#BEB4C5',
+      '#D0BCAC',
+      '#E5DB9C',
+      '#F5BFD2',
+      '#D5E4C3',
+      '#C47482',
+      '#E5B3BB',
+      '#C54B6C',
+      '#C6C9D0',
+      '#A15D98',
+      '#9C9359 '
     ];
     return colors[index];
   };
