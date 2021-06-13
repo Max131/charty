@@ -80,4 +80,4 @@ getColor(index) {
 
 
 
-If this small library is useful for you or liked you, consider to donate a small amount in thankfulness through  [Paypal ![Paypal Button](https://www.paypalobjects.com/es_XC/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=NZ9Z8YDHSMMEC&source=url) *($20MXN = $1USD)* :smile:
+If this small library is useful for you or liked you, consider to [buy a me a coffee ☕ (or pizza 🍕 😃)](https://www.buymeacoffee.com/mabreu)
